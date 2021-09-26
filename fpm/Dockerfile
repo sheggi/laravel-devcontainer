@@ -6,3 +6,7 @@ RUN apk add --no-cache mysql-dev && docker-php-ext-install mysqli pdo pdo_mysql
 RUN mkdir -p /usr/src/php/ext/redis; \
     curl -fsSL --ipv4 https://github.com/phpredis/phpredis/archive/5.3.4.tar.gz | tar xvz -C "/usr/src/php/ext/redis" --strip 1; \
     docker-php-ext-install redis
+# Install gd for php
+RUN apk add --no-cache libpng-dev && docker-php-ext-install gd
+# Install zip for php
+RUN apk add --no-cache libzip-dev && docker-php-ext-install zip
